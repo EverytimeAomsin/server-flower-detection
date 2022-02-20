@@ -34,9 +34,9 @@ const model = new TeachableMachine({
     modelUrl: "https://teachablemachine.withgoogle.com/models/fsSOSeeB9/",
   });
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.send(`
-    <form action="/image/classify" method="POST">
+    <form action="/api/image/classify" method="POST">
     <p>
     Enter Image Url</p>
     <input name='ImageUrl' autocomplete=off>
@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
       `);
   });
   
-  app.post("/image/classify", async (req, res) => {
+  app.post("/api/image/classify", async (req, res) => {
     // console.log(req);
     const url = req.body.ImageUrl;
   
