@@ -22,6 +22,15 @@ const blogSchema=mongoose.Schema({
         type:String,
         default:"Admin"
     },
+    healing:{
+        type:String,
+        default:"Admin"
+    },
+    tag:{
+        type:String,
+        default:"Admin"
+    },
+    
     slug:{
         type:String,
         lowercase:true,

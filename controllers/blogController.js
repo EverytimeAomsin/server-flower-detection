@@ -4,7 +4,7 @@ const Blogs = require("../models/blogs")
 const { v4: uuidv4 } = require('uuid');
 //บันทึกข้อมูล
 exports.create=(req,res)=>{
-    const {title,intro,content,properties,author}=req.body
+    const {title,intro,content,properties,author,healing}=req.body
     let slug = slugify(title)
 
     if(!slug)slug=uuidv4();
@@ -17,7 +17,7 @@ exports.create=(req,res)=>{
             return res.status(400).json({error:"กรุณาป้อนเนื้อหาบทความ"})
             break;
     }
-    Blogs.create({title,intro,content,properties,author,slug},(err,blog)=>{
+    Blogs.create({title,intro,content,properties,author,healing,slug},(err,blog)=>{
         if(err){
             res.status(400).json({error:"มีชื่อบทความซ้ำกัน"})
         }
@@ -52,8 +52,8 @@ exports.remove=(req,res)=>{
 exports.update=(req,res)=>{
     const {slug} = req.params
     // ส่งข้อมูล => title , content, author
-    const {title,intro,content,properties,author}=req.body
-    Blogs.findOneAndUpdate({slug},{title,intro,content,properties,author},{new:true}).exec((err,blog)=>{
+    const {title,intro,content,properties,author,healing}=req.body
+    Blogs.findOneAndUpdate({slug},{title,intro,content,properties,author,healing},{new:true}).exec((err,blog)=>{
         if(err) console.log(err)
         res.json(blog)
     })
