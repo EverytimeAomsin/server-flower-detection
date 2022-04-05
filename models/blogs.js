@@ -11,8 +11,8 @@ const blogSchema=mongoose.Schema({
         required:true
     },
     intro:{
-        type:String,
-        default:"Admin"
+        type:{},
+        required:true
     },
     author:{
         type:String,
@@ -20,15 +20,15 @@ const blogSchema=mongoose.Schema({
     },
     properties:{
         type:String,
-        default:"Admin"
+        default:"-"
     },
     healing:{
         type:String,
-        default:"Admin"
+        default:"-"
     },
     tag:{
         type:String,
-        default:"Admin"
+        default:"-"
     },
     
     slug:{
